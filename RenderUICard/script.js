@@ -1,17 +1,31 @@
-const res = fetch('https://dummyjson.com/products/search?q=phone');
 
-res.then((data) => {
-    const obj = data.json()
+const input = document.querySelector('input[type="search"]');
+fetchQuery = 'https://dummyjson.com/products';
+renderObjects("", fetchQuery);
+input.onchange = () => {
 
-    obj.then((js) => {
-        renderUI(js);
-    }).catch((err) => {
-        console.log("Error occurred in parsing JS: ", err);
+    document.querySelector(".phones").innerHTML = '';
+    fetchQuery = "https://dummyjson.com/products/search?q="
+    renderObjects(input.value, fetchQuery);
+};
+
+function renderObjects(item, fetchQuery){
+    const res = fetch(fetchQuery + item);
+
+    res.then((data) => {
+        const obj = data.json();
+
+        obj.then((js) => {
+            renderUI(js);
+        }).catch((err) => {
+            console.log("Error occurred in parsing JS: ", err);
+        })
     })
-})
-.catch((err) => {
-    console.log("Error Occurred in fetching: ", err);
-});
+    .catch((err) => {
+        console.log("Error Occurred in fetching: ", err);
+    });
+
+}
 
 
 const renderUI = (js) => {
@@ -30,29 +44,10 @@ const renderUI = (js) => {
 
         container.appendChild(newPhone);
     })
-    console.log(products[0]);
+    // console.log(products[0]);
 
-    // let container = document.querySelector(".phones");
-    // console.log(js.products[0]);
-    // let newPhone = document.createElement("div");
-    // newPhone.classList.add("card");
-    // let newHeading = document.createElement("h3");
-    // newHeading.textContent = js.products[0][fields[0]];
-    // newPhone.appendChild(newHeading);
-    // let newPhoto = document.createElement("img");
-    // newPhoto.src = js.products[0][fields[1]];
-    // newPhoto.style.width = "200px";
-    // newPhone.appendChild(newPhoto);
-
-    // container.appendChild(newPhone);
-
-    
-
-    // products.forEach((prod) => {
-    //     console.log(prod.title);
-    // })
-    
 }
+
 
 function addPhoto(newPhone, prod) {
     let newPhoto = document.createElement("img");
