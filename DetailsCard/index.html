@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="outline">
+        <div class="card">
+
+            <div class="heading-id">
+                ID Card
+            </div>
+
+            <div class="photo">
+                <img id="photo-upload" alt="image" >
+            </div>
+
+            <div class="details">
+                <!-- <p id="name">Name</p>
+                <p id="email">Email</p>
+                <p id="birthdate">DOB</p>
+                <p id="years">Age</p>
+                <p id="phone">Contact</p> -->
+            </div>
+
+        </div>
+        <div class="color-choice">
+            <input type="radio" class="color" name="color" id="blue" onchange="changeColor(event)">Blue
+            <input type="radio" class="color" name="color" id="green" onchange="changeColor(event)">Green
+            <input type="radio" class="color" name="color" id="red" onchange="changeColor(event)">Red
+            <input type="radio" class="color" name="color" id="yellow" onchange="changeColor(event)">Yellow
+        </div>
+    </div>
+
+
+    <form id="form" onsubmit="handleSubmit(event)">
+            <label for="user-name">Name: </label>
+            <input type="text" id="user-name">
+
+            <label for="user-mail">Email: </label>
+            <input type="email" id="user-mail" id="">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" id="">
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" id="">
+
+            <label for="contact">Contact:</label>
+            <input type="number" id="contact" id="">
+            
+            <label for="profile-photo">Profile Photo:</label>
+            <input type="file" id="profile-photo" id="">
+
+            <button type="submit">Submit</button>
+    </form>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
