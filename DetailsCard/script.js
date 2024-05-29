@@ -3,6 +3,7 @@
 
 const handleSubmit = (e) => {
     e.preventDefault();
+    // print(e.target)
     const data = e.target;
     const attributes = ["Name", "Email", "DOB", "Age", "Contact", "Profile Photo"];
 
@@ -13,13 +14,16 @@ const handleSubmit = (e) => {
     for(i = 0; i <= 4; i++){
         // console.log(data[i].value);
         display = document.createElement('p');
-        display.textContent = attributes[i] +": " + data[i].value;
+        display.textContent = attributes[i] +": " + (data[i].value ? data[i].value : "--Missing--");
         details.appendChild(display);
     }
 
     const photo = data[5].files[0];
     const displayPhoto = document.getElementById("photo-upload");
-    displayPhoto.src = URL.createObjectURL(photo);
+    if (photo){
+        displayPhoto.src = URL.createObjectURL(photo);
+    }
+    displayPhoto.alt = "Profile photo missing"
 
 
     const form = document.getElementById("form");
